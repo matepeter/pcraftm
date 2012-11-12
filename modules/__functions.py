@@ -20,3 +20,18 @@ def getStatvfs ( path ):
 		result['UNKNOWN_ERROR'] = True
 		failed = True
 	return result
+
+def getDevice ( path ):
+	# props to Anders Walderburg for this snippet
+	dev = os.stat(path).st_dev
+	major, minor = os.major(dev), os.minor(dev)
+
+	from glob import glob
+	needle = "%d:%d" % (major, minor)
+		
+	files = glob("/sys/class/block/*/dev")
+	for f in files:
+		if file(f).read().strip() == needle:
+			return os.path.dirname(f).rsplit('/', 1)[1]
+
+	return None
