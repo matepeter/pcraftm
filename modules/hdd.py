@@ -1,5 +1,4 @@
 import os
-from . import conf
 from __functions import *
 
 def getStatus ( mountpoint="/" ) :

@@ -1,17 +1,16 @@
 import os
-from . import conf
 from __functions import *
 
-def getStatus ( ) :
+def getStatus ( path ) :
 	failed = False
 	result = dict()
 
-	if not os.path.ismount(conf.config['ramdisk_dir']):
+	if not os.path.ismount(path):
 		result['NOT_MOUNTED'] = True
 		failed = True
 
 	if not failed:
-		r = getStatvfs(conf.config['ramdisk_dir'])
+		r = getStatvfs(path)
 		for x in r.iterkeys():
 			result[x] = r[x]
 
