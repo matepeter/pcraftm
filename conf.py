@@ -1,4 +1,4 @@
 
 config = dict( \
-    ramdisk_dir = "/home/ponycraft/ramdisk" \
+    ramdisk_dir = "/home/wurst/ramdisk" \
 )
