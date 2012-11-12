@@ -22,7 +22,7 @@ def getStatvfs ( path ):
 	return result
 
 def getDevice ( path ):
-	# props to Anders Walderburg for this snippet
+	# props to Anders Waldenborg for this snippet
 	dev = os.stat(path).st_dev
 	major, minor = os.major(dev), os.minor(dev)
 
