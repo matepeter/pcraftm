@@ -6,7 +6,8 @@ def get_info ( mountpoint="/" ) :
 	result = dict()
 	
 	if not os.path.exists(mountpoint):
-		raise ModuleError(__name__, 'PATH_DOES_NOT_EXIST')
+		raise ModuleError(__name__, \
+			'PATH_DOES_NOT_EXIST \'{0}\''.format(mountpoint))
 
 	result['is_mountpoint'] = os.path.ismount(mountpoint)
 	r = getStatvfs(mountpoint)
