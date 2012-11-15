@@ -1,14 +1,16 @@
 import os
 
+class ModuleError ( Exception ):
+	""" Base class for errors raised by Pcraftm modules """ 
+
 def getStatvfs ( path ):
 	result = dict()
 	
 	stats = dict()
 	try:
 		st = os.statvfs(path)
-	except:
-		result['UNKNOWN_ERROR'] = True
-		failed = True
+	except Exception:
+		raise ModuleError("STATVFS_FAILURE")
 	else:
 		# disk usage
 		stats['du_free'] = st.f_bavail * st.f_frsize
@@ -33,7 +35,10 @@ def getDevice ( path ):
 		
 	files = glob("/sys/class/block/*/dev")
 	for f in files:
-		if file(f).read().strip() == needle:
-			return os.path.dirname(f).rsplit('/', 1)[1]
+		try:
+			if file(f).read().strip() == needle:
+				return os.path.dirname(f).rsplit('/', 1)[1]
+		except Exception:
+			raise ModuleError('ERROR_READING \'{0}\''.format(os.path.abspath(f)))
 
 	return None
