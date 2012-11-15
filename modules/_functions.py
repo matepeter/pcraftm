@@ -1,7 +1,7 @@
 import os
 
 class ModuleError ( Exception ):
-	""" Base class for errors raised by Pcraftm modules """ 
+	""" Base class for errors raised by Pcraftm modules """
 	def __init__(self, module, message):
 		self.module = module
 		self.message = message
@@ -10,7 +10,7 @@ class ModuleError ( Exception ):
 
 def get_statvfs ( path ):
 	result = dict()
-	
+
 	stats = dict()
 	try:
 		st = os.statvfs(path)
@@ -37,7 +37,7 @@ def get_device ( path ):
 
 	from glob import glob
 	needle = "%d:%d" % (major, minor)
-		
+
 	files = glob("/sys/class/block/*/dev")
 	for f in files:
 		try:
