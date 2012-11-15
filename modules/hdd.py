@@ -1,5 +1,5 @@
 import os
-from __functions import *
+from _functions import *
 
 def get_info ( mountpoint="/" ) :
 	failed = False
