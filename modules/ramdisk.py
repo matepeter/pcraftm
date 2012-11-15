@@ -1,14 +1,14 @@
 import os
-from _functions import *
+import _functions
 
 def get_info ( path ) :
 	failed = False
 	result = dict()
 
 	if not os.path.ismount(path):
-		raise ModuleError(__name__, "NO_RAMDISK")
+		raise _functions.ModuleError(__name__, "NO_RAMDISK")
 
-	r = getStatvfs(path)
+	r = _functions.get_statvfs(path)
 	for x in r.iterkeys():
 		result[x] = r[x]
 

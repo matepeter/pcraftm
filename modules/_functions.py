@@ -8,7 +8,7 @@ class ModuleError ( Exception ):
 	def __str__(self):
 		return "{0}: {1}".format(self.module, self.message)
 
-def getStatvfs ( path ):
+def get_statvfs ( path ):
 	result = dict()
 	
 	stats = dict()
@@ -30,7 +30,7 @@ def getStatvfs ( path ):
 
 	return result
 
-def getDevice ( path ):
+def get_device ( path ):
 	# props to Anders Waldenborg for this snippet
 	dev = os.stat(path).st_dev
 	major, minor = os.major(dev), os.minor(dev)
