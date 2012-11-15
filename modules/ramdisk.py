@@ -1,7 +1,7 @@
 import os
 from __functions import *
 
-def getStatus ( path ) :
+def get_info ( path ) :
 	failed = False
 	result = dict()
 

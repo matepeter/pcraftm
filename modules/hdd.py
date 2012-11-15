@@ -1,7 +1,7 @@
 import os
 from __functions import *
 
-def getStatus ( mountpoint="/" ) :
+def get_info ( mountpoint="/" ) :
 	failed = False
 	result = dict()
 	
